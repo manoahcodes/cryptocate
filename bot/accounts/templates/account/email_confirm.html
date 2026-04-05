@@ -1,0 +1,62 @@
+{% extends "account/base.html" %}
+{% load i18n %}
+{% load allauth account %}
+
+{% block head_title %}Verify Email{% endblock %}
+
+{% block extra_css %}
+.code-input {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5em;
+  padding: 14px 10px;
+  color: #fff;
+}
+.email-badge {
+  background: #0a0a12;
+  border: 1px solid #2a2a4a;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  text-align: center;
+  margin-bottom: 20px;
+  word-break: break-all;
+}
+{% endblock %}
+
+{% block content %}
+<div style="text-align:center; font-size:2.5rem; margin-bottom:12px;">📬</div>
+<h1>{% trans "Check your email" %}</h1>
+<p class="subtitle">{% trans "We sent you a 6-digit verification code" %}</p>
+
+{% if pending_verification %}
+  <div class="email-badge">{{ pending_verification.email }}</div>
+{% endif %}
+
+{% if form.errors %}
+  <ul class="errorlist">
+    {% for field in form %}
+      {% for error in field.errors %}<li>{{ error }}</li>{% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}<li>{{ error }}</li>{% endfor %}
+  </ul>
+{% endif %}
+
+<form method="POST">
+  {% csrf_token %}
+
+  <label for="id_code" style="text-align:center; display:block;">{% trans "Verification code" %}</label>
+  <input type="text" name="code" id="id_code" class="code-input"
+         placeholder="000000" maxlength="6" inputmode="numeric"
+         pattern="[0-9]{6}" autocomplete="one-time-code" autofocus required>
+
+  <button type="submit" class="btn-primary">{% trans "Verify" %}</button>
+</form>
+
+<div class="links" style="margin-top:24px;">
+  <p style="margin-bottom:8px;">{% trans "Didn't receive the code?" %}</p>
+  <a href="{% url 'account_email_verification_sent' %}">{% trans "Resend code" %}</a>
+</div>
+{% endblock %}

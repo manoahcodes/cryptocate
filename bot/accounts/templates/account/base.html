@@ -1,0 +1,179 @@
+{% load i18n %}{% load socialaccount %}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block head_title %}WhaleWatch{% endblock %} — WhaleWatch</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0a12;
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .card {
+      background: #12121e;
+      border: 1px solid #1e1e36;
+      border-radius: 16px;
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    }
+
+    .brand {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .brand-logo { font-size: 2rem; margin-bottom: 6px; }
+    .brand-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.3px;
+    }
+
+    h1 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      font-size: 0.875rem;
+      color: #94a3b8;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    input[type="email"],
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+      background: #0a0a12;
+      border: 1px solid #2a2a4a;
+      border-radius: 8px;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color 0.15s;
+      margin-bottom: 16px;
+    }
+    input:focus { border-color: #4f46e5; box-shadow: 0 0 0 3px rgba(79,70,229,0.15); }
+
+    .btn-primary {
+      display: block;
+      width: 100%;
+      background: #4f46e5;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 12px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .btn-primary:hover { background: #4338ca; transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: #1a1a2e;
+      color: #e2e8f0;
+      border: 1px solid #2a2a4a;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 11px 16px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s;
+      margin-bottom: 10px;
+    }
+    .btn-social:hover { background: #232340; border-color: #4f46e5; }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+      color: #475569;
+      font-size: 0.8rem;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #1e1e36;
+    }
+
+    .links {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+    .links a { color: #818cf8; text-decoration: none; }
+    .links a:hover { text-decoration: underline; }
+
+    .alert {
+      border-radius: 8px;
+      padding: 11px 14px;
+      font-size: 0.875rem;
+      margin-bottom: 16px;
+    }
+    .alert-error { background: #1f0a0a; border: 1px solid #7f1d1d; color: #fca5a5; }
+    .alert-success { background: #0a1f0a; border: 1px solid #14532d; color: #86efac; }
+    .alert-info { background: #0a0f1f; border: 1px solid #1e3a5f; color: #93c5fd; }
+
+    .errorlist { color: #fca5a5; font-size: 0.8rem; margin-bottom: 10px; list-style: none; }
+    .errorlist li::before { content: '⚠ '; }
+
+    {% block extra_css %}{% endblock %}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="brand">
+      <div class="brand-logo">🐋</div>
+      <div class="brand-name">WhaleWatch</div>
+    </div>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert {% if message.tags == 'error' %}alert-error{% elif message.tags == 'success' %}alert-success{% else %}alert-info{% endif %}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
