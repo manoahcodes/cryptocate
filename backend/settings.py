@@ -218,21 +218,16 @@ SOCIALACCOUNT_EMAIL_REQUIRED = True
 # OAuth2 provider credentials — loaded from environment
 # https://docs.allauth.org/en/latest/socialaccount/provider_configuration.html
 SOCIALACCOUNT_PROVIDERS = {
-    "google": {
-        # https://docs.allauth.org/en/latest/socialaccount/providers/google.html
-        "APPS": [
-            {
-                "client_id": os.environ.get("GOOGLE_CLIENT_ID", ""),
-                "secret": os.environ.get("GOOGLE_CLIENT_SECRET", ""),
-                "key": "",
-            }
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
         ],
-        "SCOPE": ["profile", "email"],
-        "AUTH_PARAMS": {"access_type": "online"},
-        "OAUTH_PKCE_ENABLED": True,
-        # Trust Google's email verification
-        "VERIFIED_EMAIL": True,
-    },
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
+    }
 }
 
 # ── Email backend ───────────────────────────────────────────────────────────────
