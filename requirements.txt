@@ -14,4 +14,3 @@ django-environ==0.11.2
 rugcheck==1.0.0
 PyJWT==2.9.0
 git+https://github.com/manoahcodes/pumpfun.git
-django-health-check

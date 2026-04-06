@@ -23,7 +23,7 @@ ALLOWED_HOSTS_ENV = os.environ.get("ALLOWED_HOSTS", "")
 ALLOWED_HOSTS = (
     ALLOWED_HOSTS_ENV.split(",")
     if ALLOWED_HOSTS_ENV
-    else ["localhost", "127.0.0.1", "cryptocate-production.up.railway.app", ".devtunnels.ms", "healthcheck.railway.app", "up.railway.app"]
+    else ["localhost", "127.0.0.1", "cryptocate-production.up.railway.app", ".devtunnels.ms", "up.railway.app"]
 )
 
 # Derive host from WEBHOOK_URL for ALLOWED_HOSTS
@@ -60,10 +60,6 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
-
-    # Django Health Check
-    # https://codingjoe.dev/django-health-check/
-    "health_check",
 
     # Project apps
     "bot.accounts",
