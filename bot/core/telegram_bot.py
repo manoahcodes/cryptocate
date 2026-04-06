@@ -1,5 +1,5 @@
 """
-WhaleWatch Telegram Bot — command handlers with inline button menus.
+Cryptocate Telegram Bot — command handlers with inline button menus.
 
 All major actions are available as inline buttons AND slash commands.
 Buttons use structured callback_data: "action:param1:param2"
@@ -450,7 +450,7 @@ async def _show_menu(update: Update, user, edit: bool = False):
     chains    = "ETH · ARB · BASE · BSC · SOL" if is_pro else "ETH only"
 
     text = (
-        f"🐋 <b>WhaleWatch Bot</b> — {_badge(is_pro)}\n\n"
+        f"🐋 <b>Cryptocate Bot</b> — {_badge(is_pro)}\n\n"
         f"👤 {name}\n"
         f"📧 {he(email or 'not linked')}\n"
         f"👛 Wallets: {wcount}/{wlimit}\n"
@@ -473,7 +473,7 @@ async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not await _db_reg_complete(user):
         await _reply(
             update,
-            "👋 <b>Welcome to WhaleWatch Bot!</b>\n\n"
+            "👋 <b>Welcome to Cryptocate Bot!</b>\n\n"
             "Before you can track wallets, create your free account.\n"
             "It takes under 60 seconds — email or Google.\n\n"
             "Your account keeps your wallets, alerts, and subscription "
@@ -550,7 +550,7 @@ async def _show_subscribe(update: Update, user, edit=False):
         url   = await _db_checkout(user)
         email = await _db_email(user)
         text = (
-            f"🚀 <b>Upgrade to WhaleWatch Pro</b>\n\n"
+            f"🚀 <b>Upgrade to Cryptocate Pro</b>\n\n"
             f"📧 Billing email: <code>{he(email or '')}</code>\n\n"
             "• 10 wallets · All 5 chains\n"
             "• 1 ETH threshold\n"

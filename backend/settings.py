@@ -1,5 +1,5 @@
 """
-WhalWatch Bot — Django 5.2 Settings
+Cryptocate — Django 5.2 Settings
 Reference: https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 

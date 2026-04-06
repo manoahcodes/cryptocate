@@ -1,5 +1,5 @@
 """
-Celery configuration for WhaleWatch Bot.
+Celery configuration for Cryptocate.
 Reference: https://docs.celeryq.dev/en/stable/django/first-steps-with-django.html
 """
 
@@ -10,7 +10,7 @@ from celery.schedules import crontab
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
 
-app = Celery("whalewatch")
+app = Celery("cryptocate")
 
 # Use Django settings for all Celery config
 app.config_from_object("django.conf:settings", namespace="CELERY")
