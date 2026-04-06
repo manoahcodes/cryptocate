@@ -31,7 +31,17 @@ _webhook_host = WEBHOOK_URL.replace("https://", "").replace("http://", "").split
 if _webhook_host and _webhook_host not in ALLOWED_HOSTS:
     ALLOWED_HOSTS.append(_webhook_host)
 
-CSRF_TRUSTED_ORIGINS = [WEBHOOK_URL, "http://localhost:8000"]
+_extra_origins = [
+    o.strip()
+    for o in os.environ.get("CSRF_TRUSTED_ORIGINS", "").split(",")
+    if o.strip()
+]
+CSRF_TRUSTED_ORIGINS = list({
+    WEBHOOK_URL,
+    "http://localhost:8000",
+    *_extra_origins,
+})
+
 
 # ── Application definition ──────────────────────────────────────────────────────
 INSTALLED_APPS = [
