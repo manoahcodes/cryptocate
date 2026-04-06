@@ -23,7 +23,7 @@ ALLOWED_HOSTS_ENV = os.environ.get("ALLOWED_HOSTS", "")
 ALLOWED_HOSTS = (
     ALLOWED_HOSTS_ENV.split(",")
     if ALLOWED_HOSTS_ENV
-    else ["localhost", "127.0.0.1", "cryptocate-production.up.railway.app", ".wasmer.io", ".devtunnels.ms", "up.railway.app"]
+    else ["localhost", "127.0.0.1", "cryptocate-production.up.railway.app", ".devtunnels.ms", "healthcheck.railway.app", "up.railway.app"]
 )
 
 # Derive host from WEBHOOK_URL for ALLOWED_HOSTS
