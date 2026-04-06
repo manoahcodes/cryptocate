@@ -9,7 +9,7 @@ from backend.views import health_check, telegram_redirect_view
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("allauth.urls")),
+    path("accounts/", include("allauth.urls")),
     # Our accounts app: /accounts/register/ and /accounts/dashboard/
     path("accounts/", include("bot.accounts.urls")),
     # Telegram + Paddle webhooks
