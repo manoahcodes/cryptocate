@@ -3,7 +3,6 @@ src/staticfiles/vendors
 agent/
 3rdparty/
 bucket/
-/celerybeatdb/
 db.sqlite3
 
 # Byte-compiled / optimized / DLL files
