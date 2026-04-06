@@ -61,6 +61,10 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
 
+    # Django Health Check
+    # https://codingjoe.dev/django-health-check/
+    "health_check",
+
     # Project apps
     "bot.accounts",
     "bot.core",
